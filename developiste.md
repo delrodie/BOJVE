@@ -257,3 +257,9 @@ Ainsi nous avons comme MLD
 1°/ **Gestion de la classe Presentation**
     Creation des classes Presentation et ImgPresentation
     ** - [*- php bin/console doctrine:generate:entity AppBundle:Presentation/ImgPresentation -*]
+
+    Mise a jour de la base de données
+    ** - [*- php bin/console doctrine:schema:update --force -*]
+
+    Generation CRUD de la classe ImgPresentation
+    ** - [*- php bin/console doctrine:generate:crud AppBundle:ImgPresentation -*]

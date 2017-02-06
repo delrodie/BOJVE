@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Imgpresentation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ imgPresentation.id }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ imgPresentation.url }}</td>
+            </tr>
+            <tr>
+                <th>Alt</th>
+                <td>{{ imgPresentation.alt }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if imgPresentation.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_imgpresentation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_imgpresentation_edit', { 'id': imgPresentation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

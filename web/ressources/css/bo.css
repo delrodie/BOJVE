@@ -1,0 +1,33 @@
+/* LOGO */
+
+@font-face {
+    font-family: 'MonLogo';
+    src: url("../font/cityscape-font.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.MonLogo {
+    font-family: MonLogo;
+    font-size: 4.5em;
+    text-transform: uppercase;
+}
+
+
+/* Statistiques */
+
+.requins-stat h5,
+.requins-info h5 {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-left: 25px;
+    padding-top: 25px;
+}
+
+.requins-invisible {
+    display: none;
+}
+
+.tab-pane .row {
+    padding-bottom: 15px;
+}

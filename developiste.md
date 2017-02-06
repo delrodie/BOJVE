@@ -245,3 +245,15 @@ Ainsi nous avons comme MLD
 7°/ **Installation de StofDoctrineExtensionsBundle**
     Installation de StofDoctrineExtensionsBundle
     ** - [*- https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/symfony2.md -*]
+
+
+/*****
+ *** Gestion du site de JVE Côte d'Ivoire
+ *** @Author: Delrodie AMOIKON
+ *** @version: 1.1.*
+ *** @Date: Lundi 06 Fevrier 2017
+*****/
+
+1°/ **Gestion de la classe Presentation**
+    Creation des classes Presentation et ImgPresentation
+    ** - [*- php bin/console doctrine:generate:entity AppBundle:Presentation/ImgPresentation -*]

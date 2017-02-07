@@ -272,3 +272,11 @@ Ainsi nous avons comme MLD
 2°/ **Gestion de la classe Projet**
     Creation des classes Projets et ImgProjet
     ** - [*- php bin/console doctrine:generate:entity AppBundle:Projet/ImgProjet -*]
+
+    Mise a jour de la base de données
+    ** - [*- php bin/console doctrine:schema:update --force -*]
+
+    Genetation CRUD de la classe ImgProjet
+    ** - [*- php bin/console doctrine:generate:crud AppBundle:ImgProjet -*]
+
+    Modification de la classe Form/ImgProjetType

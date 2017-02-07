@@ -4,3 +4,8 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+menu_presentation:
+    path:     /menu/presentation
+    defaults: { _controller: "AppBundle:Menu:presentation" }
+    methods:  [GET, POST]

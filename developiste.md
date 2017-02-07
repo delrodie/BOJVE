@@ -266,3 +266,5 @@ Ainsi nous avons comme MLD
 
     Generation CRUD de la classe Presentation
     ** - [*- php bin/console doctrine:generate:crud AppBundle:Presentation -*]
+
+    Intregration du menu de la rubrique Presentation dans le layout 

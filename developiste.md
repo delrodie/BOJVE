@@ -263,3 +263,6 @@ Ainsi nous avons comme MLD
 
     Generation CRUD de la classe ImgPresentation
     ** - [*- php bin/console doctrine:generate:crud AppBundle:ImgPresentation -*]
+
+    Generation CRUD de la classe Presentation
+    ** - [*- php bin/console doctrine:generate:crud AppBundle:Presentation -*]

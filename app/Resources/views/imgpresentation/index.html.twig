@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Imgpresentations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for imgPresentation in imgPresentations %}
+            <tr>
+                <td><a href="{{ path('admin_imgpresentation_show', { 'id': imgPresentation.id }) }}">{{ imgPresentation.id }}</a></td>
+                <td>{{ imgPresentation.url }}</td>
+                <td>{{ imgPresentation.alt }}</td>
+                <td>{% if imgPresentation.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_imgpresentation_show', { 'id': imgPresentation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_imgpresentation_edit', { 'id': imgPresentation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_imgpresentation_new') }}">Create a new imgPresentation</a>
+        </li>
+    </ul>
+{% endblock %}

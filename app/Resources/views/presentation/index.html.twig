@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Presentations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rubrique</th>
+                <th>Titre</th>
+                <th>Slug</th>
+                <th>Resume</th>
+                <th>Contenu</th>
+                <th>Tags</th>
+                <th>Publiepar</th>
+                <th>Modifiepar</th>
+                <th>Publiele</th>
+                <th>Modifiele</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for presentation in presentations %}
+            <tr>
+                <td><a href="{{ path('admin_presentation_show', { 'id': presentation.id }) }}">{{ presentation.id }}</a></td>
+                <td>{{ presentation.rubrique }}</td>
+                <td>{{ presentation.titre }}</td>
+                <td>{{ presentation.slug }}</td>
+                <td>{{ presentation.resume }}</td>
+                <td>{{ presentation.contenu }}</td>
+                <td>{{ presentation.tags }}</td>
+                <td>{{ presentation.publiePar }}</td>
+                <td>{{ presentation.modifiePar }}</td>
+                <td>{{ presentation.publieLe }}</td>
+                <td>{{ presentation.modifieLe }}</td>
+                <td>{% if presentation.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_presentation_show', { 'id': presentation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_presentation_edit', { 'id': presentation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_presentation_new') }}">Create a new presentation</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'BOLayout.html.twig' %}
+
+{% block title %}
+  {{ parent() }}
+  {{ projet.titre }}
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('ressources/vendor/css/blog.min.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block body %}
+<!-- BEGIN BREADCRUMBS -->
+<div class="breadcrumbs">
+  <h1>{{ projet.rubrique }}</h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="{{ path('homepage')}}">Accueil</a>
+    </li>
+    <li>
+      <a href="#">projet</a>
+    </li>
+    <li class="active">{{ projet.titre }}</li>
+  </ol>
+  <!-- Sidebar Toggle Button -->
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".page-sidebar">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="toggle-icon">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </span>
+  </button>
+  <!-- Sidebar Toggle Button -->
+  </div>
+  <!-- END BREADCRUMBS -->
+  <!-- BEGIN SIDEBAR CONTENT LAYOUT -->
+  <div class="page-content-container">
+    <div class="page-content-row">
+    <!-- BEGIN PAGE SIDEBAR -->
+    <div class="page-sidebar">
+      <nav class="navbar" role="navigation">
+        <ul class="nav navbar-nav margin-bottom-35">
+          <li class="active">
+            <a href="{{ path('admin_projet_edit', { 'slug': projet.slug }) }}">
+            <i class="fa fa-edit"></i> Modifier </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- END PAGE SIDEBAR -->
+    <div class="page-content-col">
+      <!-- BEGIN PAGE BASE CONTENT -->
+      <div class="blog-page blog-content-2">
+        <div class="row">
+          <div class="col-lg-9">
+            <div class="blog-single-content bordered blog-container">
+              <div class="blog-single-head">
+                <h1 class="blog-single-head-title">{{ projet.titre }}</h1>
+                <div class="blog-single-head-date">
+                  <i class="icon-calendar font-blue"></i>
+                  <em>Publié par </em>
+                  <a href="javascript:;">{{ projet.publiePar }}</a> le
+                  <a href="javascript:;">{% if projet.publieLe %}{{ projet.publieLe|date('d-m-Y H:m:s') }}{% endif %}</a>
+                  {% if projet.modifieLe %}
+                  et modifié le
+                  <a href="javascript:;">{% if projet.modifieLe %}{{ projet.modifieLe|date('d-m-Y H:m:s') }}{% endif %}</a>
+                  par <a href="javascript:;">{{ projet.modifiePar }}</a>
+                  {% endif %}
+                </div>
+              </div>
+              <br>
+              <div class="blog-single-img">
+                {% if projet.image %}
+                    <img src="{{ asset('ressources/images/projet/' ~ projet.image.id ~ '.' ~ projet.image.url )}}" alt="{{ projet.titre }}" class="img-thumbnail" />
+                {% else %}
+                    <img src="{{ asset('ressources/images/logo.jpg')}}" alt="{{ projet.titre }}" class="img-thumbnail" />
+                {% endif %}
+              </div>
+              <div class="blog-single-desc">
+                <p style="font-style:italic; font-weight:bold;">{{ projet.resume }}</p>
+                {{ projet.contenu|raw }}
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-lg-3">
+          <div class="blog-single-sidebar bordered blog-container">
+
+          <div class="blog-single-sidebar-tags">
+          <h3 class="blog-sidebar-title uppercase">Mots clés</h3>
+            <div class="">
+              {{ projet.tags }}
+            </div>
+          </div>
+
+          </div>
+          </div>
+        </div>
+      </div>
+    <!-- END PAGE BASE CONTENT -->
+    </div>
+  </div>
+</div>
+<!-- END SIDEBAR CONTENT LAYOUT -->
+
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+  <!-- END PAGE LEVEL PLUGINS -->
+{% endblock %}

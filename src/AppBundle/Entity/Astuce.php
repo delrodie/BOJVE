@@ -47,6 +47,22 @@ class Astuce
     /**
      * @var string
      *
+     * @Gedmo\Versioned
+     * @ORM\Column(name="auteur", type="string", length=255, nullable=true)
+     */
+    private $auteur;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Versioned
+     * @ORM\Column(name="source", type="string", length=255, nullable=true)
+     */
+    private $source;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="datedeb", type="string", length=10, nullable=true)
      */
     private $datedeb;
@@ -347,5 +363,53 @@ class Astuce
     public function getStatut()
     {
         return $this->statut;
+    }
+
+    /**
+     * Set auteur
+     *
+     * @param string $auteur
+     *
+     * @return Astuce
+     */
+    public function setAuteur($auteur)
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * Get auteur
+     *
+     * @return string
+     */
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+
+    /**
+     * Set source
+     *
+     * @param string $source
+     *
+     * @return Astuce
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * Get source
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 }

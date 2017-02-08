@@ -27,7 +27,7 @@ class Projet
      * @var string
      *
      * @Gedmo\Versioned
-     * @ORM\Column(name="rubrique", type="string", length=75, unique=true)
+     * @ORM\Column(name="rubrique", type="string", length=75, unique=true, nullable=true)
      */
     private $rubrique;
 

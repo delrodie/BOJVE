@@ -31,3 +31,12 @@
 .tab-pane .row {
     padding-bottom: 15px;
 }
+
+.bo-statut-on{
+  font-weight: bold;
+}
+
+.bo-statut-off{
+  color: red;
+  font-weight: bold;
+}

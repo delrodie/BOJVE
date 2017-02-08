@@ -27,7 +27,7 @@ class Projet
      * @var string
      *
      * @Gedmo\Versioned
-     * @ORM\Column(name="rubrique", type="string", length=75, unique=true)
+     * @ORM\Column(name="rubrique", type="string", length=75, unique=true, nullable=true)
      */
     private $rubrique;
 
@@ -129,5 +129,317 @@ class Projet
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set rubrique
+     *
+     * @param string $rubrique
+     *
+     * @return Projet
+     */
+    public function setRubrique($rubrique)
+    {
+        $this->rubrique = $rubrique;
+
+        return $this;
+    }
+
+    /**
+     * Get rubrique
+     *
+     * @return string
+     */
+    public function getRubrique()
+    {
+        return $this->rubrique;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     *
+     * @return Projet
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Projet
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set resume
+     *
+     * @param string $resume
+     *
+     * @return Projet
+     */
+    public function setResume($resume)
+    {
+        $this->resume = $resume;
+
+        return $this;
+    }
+
+    /**
+     * Get resume
+     *
+     * @return string
+     */
+    public function getResume()
+    {
+        return $this->resume;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     *
+     * @return Projet
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * Set datedeb
+     *
+     * @param string $datedeb
+     *
+     * @return Projet
+     */
+    public function setDatedeb($datedeb)
+    {
+        $this->datedeb = $datedeb;
+
+        return $this;
+    }
+
+    /**
+     * Get datedeb
+     *
+     * @return string
+     */
+    public function getDatedeb()
+    {
+        return $this->datedeb;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param string $tags
+     *
+     * @return Projet
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return string
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Set publiePar
+     *
+     * @param string $publiePar
+     *
+     * @return Projet
+     */
+    public function setPubliePar($publiePar)
+    {
+        $this->publiePar = $publiePar;
+
+        return $this;
+    }
+
+    /**
+     * Get publiePar
+     *
+     * @return string
+     */
+    public function getPubliePar()
+    {
+        return $this->publiePar;
+    }
+
+    /**
+     * Set modifiePar
+     *
+     * @param string $modifiePar
+     *
+     * @return Projet
+     */
+    public function setModifiePar($modifiePar)
+    {
+        $this->modifiePar = $modifiePar;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiePar
+     *
+     * @return string
+     */
+    public function getModifiePar()
+    {
+        return $this->modifiePar;
+    }
+
+    /**
+     * Set publieLe
+     *
+     * @param \DateTime $publieLe
+     *
+     * @return Projet
+     */
+    public function setPublieLe($publieLe)
+    {
+        $this->publieLe = $publieLe;
+
+        return $this;
+    }
+
+    /**
+     * Get publieLe
+     *
+     * @return \DateTime
+     */
+    public function getPublieLe()
+    {
+        return $this->publieLe;
+    }
+
+    /**
+     * Set modifieLe
+     *
+     * @param \DateTime $modifieLe
+     *
+     * @return Projet
+     */
+    public function setModifieLe($modifieLe)
+    {
+        $this->modifieLe = $modifieLe;
+
+        return $this;
+    }
+
+    /**
+     * Get modifieLe
+     *
+     * @return \DateTime
+     */
+    public function getModifieLe()
+    {
+        return $this->modifieLe;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param boolean $statut
+     *
+     * @return Projet
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return boolean
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \AppBundle\Entity\ImgProjet $image
+     *
+     * @return Projet
+     */
+    public function setImage(\AppBundle\Entity\ImgProjet $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \AppBundle\Entity\ImgProjet
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

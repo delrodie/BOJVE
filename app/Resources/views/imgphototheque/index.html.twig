@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Imgphototheques list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Description</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for imgPhototheque in imgPhototheques %}
+            <tr>
+                <td><a href="{{ path('admin_imgphototheque_show', { 'id': imgPhototheque.id }) }}">{{ imgPhototheque.id }}</a></td>
+                <td>{{ imgPhototheque.url }}</td>
+                <td>{{ imgPhototheque.alt }}</td>
+                <td>{{ imgPhototheque.description }}</td>
+                <td>{% if imgPhototheque.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_imgphototheque_show', { 'id': imgPhototheque.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_imgphototheque_edit', { 'id': imgPhototheque.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_imgphototheque_new') }}">Create a new imgPhototheque</a>
+        </li>
+    </ul>
+{% endblock %}

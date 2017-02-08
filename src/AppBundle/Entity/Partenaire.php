@@ -26,7 +26,7 @@ class Partenaire
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      */
     private $nom;
 
@@ -38,7 +38,7 @@ class Partenaire
     private $presentation;
 
     /**
-     * @Gedmo\Slug(fields={"nom"})
+     * @Gedmo\Slug(fields={"presentation"})
      * @ORM\Column(length=128, unique=true)
      */
     private $slug;

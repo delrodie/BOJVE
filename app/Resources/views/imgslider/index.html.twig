@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Imgsliders list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for imgSlider in imgSliders %}
+            <tr>
+                <td><a href="{{ path('admin_imgslider_show', { 'id': imgSlider.id }) }}">{{ imgSlider.id }}</a></td>
+                <td>{{ imgSlider.url }}</td>
+                <td>{{ imgSlider.alt }}</td>
+                <td>{% if imgSlider.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_imgslider_show', { 'id': imgSlider.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_imgslider_edit', { 'id': imgSlider.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_imgslider_new') }}">Create a new imgSlider</a>
+        </li>
+    </ul>
+{% endblock %}

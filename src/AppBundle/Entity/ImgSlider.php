@@ -9,8 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Image
  *
- * @ORM\Table(name="imgprojet")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\imgprojetRepository")
+ * @ORM\Table(name="imgslider")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\imgsliderRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class ImgSlider

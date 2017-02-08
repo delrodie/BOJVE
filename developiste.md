@@ -280,3 +280,6 @@ Ainsi nous avons comme MLD
     ** - [*- php bin/console doctrine:generate:crud AppBundle:ImgProjet -*]
 
     Modification de la classe Form/ImgProjetType
+
+3°/ **Gestion de la classe Phototheque**
+    

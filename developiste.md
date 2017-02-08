@@ -282,4 +282,4 @@ Ainsi nous avons comme MLD
     Modification de la classe Form/ImgProjetType
 
 3°/ **Gestion de la classe Phototheque**
-    
+4°/ **Gestion de la classe Videotheque**

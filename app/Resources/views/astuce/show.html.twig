@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Astuce</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ astuce.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ astuce.titre }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ astuce.slug }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ astuce.description }}</td>
+            </tr>
+            <tr>
+                <th>Datedeb</th>
+                <td>{{ astuce.datedeb }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ astuce.datefin }}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ astuce.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ astuce.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ astuce.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ astuce.modifieLe }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{% if astuce.statut %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_astuce_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_astuce_edit', { 'id': astuce.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -136,4 +136,33 @@ class FoController extends Controller
              ));
          }
 
+         /**
+         * Recherche des articles actifs de l'entité Phototheques.
+         *
+         */
+          public function photosAction()
+          {
+              $em = $this->getDoctrine()->getManager();
+
+              $photos = $em->getRepository('AppBundle:Phototheque')->getPhoto(null, null);
+
+              return $this->render('fr/photos.html.twig', array(
+                  'photos' => $photos,
+              ));
+          }
+
+          /**
+          * Recherche des articles actifs de l'entité projet.
+          *
+          */
+           public function photoAction($slug)
+           {
+               $em = $this->getDoctrine()->getManager();
+
+               $photos = $em->getRepository('AppBundle:Phototheque')->getArticle($slug);
+
+               return $this->render('fr/photo.html.twig', array(
+                   'photos' => $photos,
+               ));
+           }
 }

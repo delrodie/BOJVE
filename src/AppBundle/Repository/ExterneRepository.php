@@ -39,6 +39,7 @@ class ExterneRepository extends \Doctrine\ORM\EntityRepository
            return $code = $recup;
        }
    }
+   
    /**
      * Les publications internes actives
      *

@@ -100,10 +100,10 @@
 							<li>
 								<a href="#">Mediatheques</a>
 								<ul class="menu">
-									<li><a href="#">Presentation</a></li>
+									<li><a href="{{ path('fo_photos')}}">Photos</a></li>
 								</ul>
 							</li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="#contact">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -153,17 +153,17 @@
 				<div class="row">
 					<!-- PLAN -->
 					<div class="col-md-6 jve-plan hide-for-small-only">
-						<div class="row">
+            <div class="row">
 							<div class="col-md-6">
-								<div><a href="#">Qui sommes-nous?</a></div>
-								<div><a href="#">Axes d'intervention</a></div>
-								<div><a href="#">Zones d'intervention</a></div>
-								<div><a href="#">Nos projets</a></div>
+								<div><a href="{{ path('fo_presentation_show', { 'slug': 'presentation' }) }}">Qui sommes-nous?</a></div>
+								<div><a href="{{ path('fo_presentation_show', { 'slug': 'axe' }) }}">Axes d'intervention</a></div>
+								<div><a href="{{ path('fo_presentation_show', { 'slug': 'zone' }) }}">Zones d'intervention</a></div>
+								<div><a href="{{ path('fo_projets') }}">Nos projets</a></div>
 							</div>
 							<div class="col-md-6">
-								<div><a href="#">Publications internes</a></div>
-								<div><a href="#">Publications externes</a></div>
-								<div><a href="#">Nos photos</a></div>
+								<div><a href="{{ path('fo_publication_interne') }}">Publications internes</a></div>
+								<div><a href="{{ path('fo_publication_externe') }}">Publications externes</a></div>
+								<div><a href="{{ path('fo_photos')}}">Nos photos</a></div>
 								<div><a href="#">Nos vidéos</a></div>
 							</div>
 						</div>
@@ -185,6 +185,7 @@
 						<div class="jve-contact-style">
 							<i class="fa fa-envelope-square fa-1x"></i> : infos@jvecotedivoire.org / jve.ivoire@yahoo.fr
 						</div>
+            <a id="contact" href="#"></a>
 					</div>
 					<!-- \CONTACT -->
 				</div>

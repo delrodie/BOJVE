@@ -49,3 +49,13 @@ fo_publication_externe:
     path:     /publications/internationales
     defaults: { _controller: "AppBundle:Fo:externes" }
     methods:  [GET, POST]
+
+fo_photos:
+    path:     /phototheques/liste-des-albums-photos
+    defaults: { _controller: "AppBundle:Fo:photos" }
+    methods:  [GET, POST]
+
+fo_photo_show:
+    path:     /phototheques/albums/{slug}
+    defaults: { _controller: "AppBundle:Fo:photo" }
+    methods:  [GET, POST]

@@ -39,4 +39,63 @@ class PhotothequeRepository extends \Doctrine\ORM\EntityRepository
            return $code = $recup;
        }
    }
+
+   /**
+     * Les publications internes actives
+     *
+     * Author: Delrodie AMOIKON
+     * Date: 09/02/2017
+     * Since: v1.0
+     */
+     public function getPhoto($offset, $limit)
+     {
+         $em = $this->getEntityManager();
+         $qb = $em->createQuery('
+             SELECT p
+             FROM AppBundle:Phototheque p
+             WHERE p.statut = :stat
+             ORDER BY p.id DESC
+         ')
+           ->setParameter('stat', 1)
+           ->setFirstResult($offset)
+           ->setMaxResults($limit)
+         ;
+         try {
+             $result = $qb->getResult();
+
+             return $result;
+
+         } catch (NoResultException $e) {
+             return $e;
+         }
+     }
+
+     /**
+     * Recherche de l'article de la rubrique Phototheques
+     *
+     * Author: Delrodie AMOIKON
+     * Date: 09/02/2017
+     * Since: v1.0
+     */
+     public function getArticle($slug)
+     {
+         $em = $this->getEntityManager();
+         $qb = $em->createQuery('
+             SELECT p
+             FROM AppBundle:Phototheque p
+             WHERE p.slug LIKE :slug
+             AND p.statut = :stat
+         ')
+           ->setParameter('slug', '%'.$slug.'%')
+           ->setParameter('stat', 1)
+         ;
+         try {
+             $result = $qb->getResult();
+
+             return $result;
+
+         } catch (NoResultException $e) {
+             return $e;
+         }
+     }
 }

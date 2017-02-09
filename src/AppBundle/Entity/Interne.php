@@ -47,6 +47,13 @@ class Interne
     /**
      * @var string
      *
+     * @ORM\Column(name="date_parution", type="string", length=12, nullable=true)
+     */
+    private $datedeb;
+
+    /**
+     * @var string
+     *
      * @Gedmo\Blameable(on="create")
      * @ORM\Column(name="publie_par", type="string", length=255, nullable=true)
      */
@@ -313,5 +320,29 @@ class Interne
     public function getDocument()
     {
         return $this->document;
+    }
+
+    /**
+     * Set datedeb
+     *
+     * @param string $datedeb
+     *
+     * @return Interne
+     */
+    public function setDatedeb($datedeb)
+    {
+        $this->datedeb = $datedeb;
+
+        return $this;
+    }
+
+    /**
+     * Get datedeb
+     *
+     * @return string
+     */
+    public function getDatedeb()
+    {
+        return $this->datedeb;
     }
 }

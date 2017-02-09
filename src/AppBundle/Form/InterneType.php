@@ -5,12 +5,14 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class DocInterneType extends AbstractType
+use AppBundle\Entity\DocInterne;
+use AppBundle\Form\DocInterneType;
+
+class InterneType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -18,20 +20,28 @@ class DocInterneType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->add('url')->add('alt')
             ->add('titre', TextType::class, array(
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off'
                   )
             ))
-            //->add('slug')
-            //->add('statut')
-            ->add('file', FileType::class, array(
-                'label' => "Telecharger le document",
-                'required' => false,
+            ->add('datedeb', TextType::class, array(
+                  'attr'  => array(
+                      'class' => 'form-control',
+                      'autocomplete'  => 'off'
+                  )
             ))
-        ;
+            ->add('resume', TextareaType::class, array(
+                  'attr'  => array(
+                      'class' => 'form-control'
+                  ),
+                  'required' => true
+            ))
+            //->add('publiePar')->add('modifiePar')->add('publieLe')->add('modifieLe')
+            ->add('statut')
+            ->add('document', DocInterneType::class)
+            ;
     }
 
     /**
@@ -40,7 +50,7 @@ class DocInterneType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\DocInterne'
+            'data_class' => 'AppBundle\Entity\Interne'
         ));
     }
 
@@ -49,7 +59,7 @@ class DocInterneType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_docinterne';
+        return 'appbundle_interne';
     }
 
 

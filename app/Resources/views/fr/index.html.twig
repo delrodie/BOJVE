@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{% block title %}Jeunes Volontaires pour l'Environnement{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/foundation/css/foundation.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/owl-carousel/owl.carousel.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/owl-carousel/owl.theme.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/vendor/font-awesome-4.5.0/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('ressources/css/jve.css')}}">
+
+	<link rel="shortcut icon" href="{{ asset('ressources/images/favicon.jpg')}}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('ressources/images/favicon.jpg')}}" />
+    <style>
+        [class*="col-"]{ border: #000000 dotted 0px}
+        [class*="columns"]{ border: #000 dotted 0px}
+    </style>
+
+</head>
+<body>
+
+	<div id="fb-root"></div>
+	<script>
+	(function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4";
+	    fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<div class="col-xs-12 col-sm-11 col-md-10 col-lg-10 small-centered jve-container">
+		<!-- HEADER -->
+		<div class="row">
+			<div class="col-xs-2 jve-logo text-center">
+				<img src="{{ asset('ressources/images/logo.jpg')}}" alt="Logo JVE Côte d'Ivoire" class="img-responsive">
+			</div>
+			<div class="col-xs-10 jve-header">
+				<h1>Jeunes Volontaires pour l'Environnement de Côte d'Ivoire</h1>
+				<div class="jve-presentation">
+					<strong>JVE-Côte d'Ivoire</strong>, membre du reseau de <strong>JVE International</strong>, est une organisation de la societe civile ivoirienne.
+					Elle a pour mission d'éduquer, de soutenir et de renforcer les capacités de la jeunesse, des femmes et des enfants afin de contribuer au développement durable tout en garantissant une justice sociale pour tous.
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="title-bar jve-menu">
+					<div class="title-bar-right">
+						<ul class="menu dropdown" data-dropdown-menu>
+							<li><a href="#">Acceuil</a></li>
+							<li>
+								<a href="#">Qui sommes-nous?</a>
+								<ul class="menu">
+									<li><a href="#">Presentation</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Nos projets</a></li>
+							<li>
+								<a href="#">Nos publications</a>
+								<ul class="menu">
+									<li><a href="#">Presentation</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Mediatheques</a>
+								<ul class="menu">
+									<li><a href="#">Presentation</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- \HEADER -->
+		<!-- CAROUSSEL -->
+		<div class="row">
+			<div class="col-xs-12 small-centered jve-caroussel">
+				<div class="">
+		      		<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+		              <ul class="orbit-container">
+		                <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+		                <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+		                <li class="is-active orbit-slide">
+		                  <img class="orbit-image" src="{{ asset('ressources/images/car01.jpg')}}" alt="Bienvenue">
+		                  <figcaption class="orbit-caption">Ne manquons pas de faire un geste pour maintenanir notre environnement sein et durable</figcaption>
+		                </li>
+		                {% for slider in sliders %}
+                      <li class="orbit-slide">
+                        <img src="{{ asset('ressources/images/caroussel/' ~ slider.image.id ~ '.' ~ slider.image.url )}}" alt="">
+                        <figcaption class="orbit-caption">{{ slider.description }}</figcaption>
+                      </li>
+		                {% endfor %}
+		              </ul>
+
+		            </div>
+    			</div>
+			</div>
+		</div>
+		<!-- \CAROUSSEL -->
+		<!-- CONTENU -->
+		<div class="row">
+			<!-- TEXTE COURANT -->
+			<div class="col-md-8 jve-actualite">
+				<h2>Actualités</h2>
+				<div class="row">
+					<div class="small-up-1 medium-up-2 columns">
+						{% for projet in projets %}
+              <div class="columns">
+                <div class="jve-actualite-tuile">
+                  <img src="{{ asset('ressources/images/projet/' ~ projet.image.id ~ '.' ~ projet.image.url )}}" alt="{{ projet.titre }}" class="responsive">
+                  <h6>{{ projet.titre }}</h6>
+                  <div class="nombre-ligne">
+                    {{ projet.resume }}
+                  </div>
+                  <div class="lire-suite"><a href="{{ path('admin_projet_edit', { 'slug': projet.slug }) }}"> &raquo; Lire la suite</a></div>
+                </div>
+              </div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 text-right jve-actualite-suite">
+						<a href="#">... Voir toutes les actualités</a>
+					</div>
+				</div>
+			</div>
+			<!-- \TEXTE COURANT -->
+			<!-- MEDIA -->
+			<div class="col-md-4 hide-for-small-only">
+				<!-- CONSEIL et ASTUCE -->
+				<div class="row">
+					{% for astuce in astuces %}
+          <div class="col-sm-12">
+            <div class="jve-conseils">
+              <h4>{{ astuce.titre }}</h4>
+              <blockquote class="blockquote-reverse">
+                <p>
+                  {{ astuce.description }}
+                </p>
+                <footer>
+                  {{ astuce.auteur }}
+                </footer>
+                <cite>{{ astuce.source }}</cite>
+              </blockquote>
+            </div>
+          </div>
+					{% endfor %}
+				</div>
+				<!-- \CONSEILS et ASTUCE -->
+				<!-- FACEBOOK -->
+				<div class="fb-page" data-href="https://www.facebook.com/JVE-Côte-dIvoire-JVE-CI-149569338388592" data-height="800" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/JVE-Côte-dIvoire-JVE-CI-149569338388592">
+                            <a href="https://www.facebook.com/JVE-Côte-dIvoire-JVE-CI-149569338388592">JVE</a>
+                        </blockquote>
+                    </div>
+                </div>
+				<!-- \FACEBOOK -->
+			</div>
+			<!-- \MEDIA -->
+		</div>
+		<!-- \CONTENU -->
+		<!-- PARTENAIRES -->
+		<div class="row">
+			<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 small-centered jve-partenaires">
+				<div id="owl-demo">
+					{% for partenaire in partenaires %}
+					    <div class="item"><img src="{{ asset('ressources/images/partenaire/' ~ partenaire.image.id ~ '.' ~ partenaire.image.url )}}" alt="Owl Image"></div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<!-- \PARTENAIRES -->
+		<!-- FOOTER -->
+		<div class="row jve-footer">
+			<div class="col-xs-12 col-sm-10 col-md-10 small-centered ">
+				<div class="row">
+					<!-- PLAN -->
+					<div class="col-md-6 jve-plan hide-for-small-only">
+						<div class="row">
+							<div class="col-md-6">
+								<div><a href="#">Qui sommes-nous?</a></div>
+								<div><a href="#">Axes d'intervention</a></div>
+								<div><a href="#">Zones d'intervention</a></div>
+								<div><a href="#">Nos projets</a></div>
+							</div>
+							<div class="col-md-6">
+								<div><a href="#">Publications internes</a></div>
+								<div><a href="#">Publications externes</a></div>
+								<div><a href="#">Nos photos</a></div>
+								<div><a href="#">Nos vidéos</a></div>
+							</div>
+						</div>
+					</div>
+					<!-- \PLAN -->
+					<!-- CONTACT -->
+					<div class="col-md-6">
+						<div class="jve-contact-entete">Jeunes Volontaires pour l'Environnement</div>
+						<div class="jve-contact-style">
+							<i class="fa  fa-home fa-1x"></i>:Riviera-Faya, Boulevard Mitterand, En face
+							du 1er Bataillon d'Infanterie d'Akouedo, 1er &eacute;tage Immeuble B&eacute;thel Porte B1
+						</div>
+						<div class="jve-contact-style">
+							<i class="fa fa-envelope fa-1x"></i>: 01 BP 1660 Abidjan 01
+						</div>
+						<div class="jve-contact-style">
+							<i class="fa fa-phone-square fa-1x"></i>: (+225) 20012092 / 20011757 / 05907611 / 08105267
+						</div>
+						<div class="jve-contact-style">
+							<i class="fa fa-envelope-square fa-1x"></i> : infos@jvecotedivoire.org / jve.ivoire@yahoo.fr
+						</div>
+					</div>
+					<!-- \CONTACT -->
+				</div>
+			</div>
+		</div>
+		<!-- \FOOTER -->
+		<hr>
+		<!-- COPYRIGHT -->
+		<div class="row">
+			<div class="col-xs-11 small-centered jve-copyright">
+				&copy; Copyright 2016-2017 Jeunes Volontaires pour l'Environnement
+			</div>
+		</div>
+		<!-- \COPYRIGHT -->
+	</div>
+
+
+	<script type="text/javascript" src="{{ asset('ressources/js/jquery-2.1.1.min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/vendor/foundation/js/vendor/foundation.min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/vendor/foundation/js/vendor/what-input.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('ressources/vendor/owl-carousel/owl.carousel.min.js')}}"></script>
+	<script type="text/javascript">$(document).foundation();</script>
+	<script>
+
+        $(document).ready(function() {
+
+            $("#owl-demo").owlCarousel({
+
+                autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+                items : 3,
+                itemsDesktop : [1199,3],
+                itemsDesktopSmall : [979,3]
+
+            });
+
+        });
+
+    </script>
+</body>
+</html>

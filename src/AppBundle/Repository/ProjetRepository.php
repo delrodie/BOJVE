@@ -42,4 +42,34 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
            return $code = $recup;
        }
    }
+
+   /**
+     * Les projets actifs
+     *
+     * Author: Delrodie AMOIKON
+     * Date: 09/02/2017
+     * Since: v1.0
+     */
+     public function getProjet($offset, $limit)
+     {
+         $em = $this->getEntityManager();
+         $qb = $em->createQuery('
+             SELECT p
+             FROM AppBundle:Projet p
+             WHERE p.statut = :stat
+             ORDER BY p.datedeb DESC
+         ')
+           ->setParameter('stat', 1)
+           ->setFirstResult($offset)
+           ->setMaxResults($limit)
+         ;
+         try {
+             $result = $qb->getResult();
+
+             return $result;
+
+         } catch (NoResultException $e) {
+             return $e;
+         }
+     }
 }

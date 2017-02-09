@@ -10,4 +10,30 @@ namespace AppBundle\Repository;
  */
 class PartenaireRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+    * Les partenaires actifs
+    *
+    * Author: Delrodie AMOIKON
+    * Date: 09/02/2017
+    * Since: v1.0
+    */
+    public function getPartenaire()
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery('
+            SELECT p
+            FROM AppBundle:Partenaire p
+            WHERE p.statut = :stat
+        ')
+          ->setParameter('stat', 1)
+        ;
+        try {
+            $result = $qb->getResult();
+
+            return $result;
+
+        } catch (NoResultException $e) {
+            return $e;
+        }
+    }
 }

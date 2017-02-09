@@ -1,0 +1,3 @@
+{% for presentation in presentations %}
+    <li><a href="{{ path('fo_presentation_show', { 'slug': presentation.slug }) }}">{{ presentation.rubrique|capitalize }}</a></li>
+{% endfor %}

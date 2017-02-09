@@ -31,6 +31,49 @@ class FoController extends Controller
         ));
     }
 
+    /**
+    * Recherche des articles actifs de l'entité presentation.
+    *
+    */
+   public function presentationAction($slug)
+   {
+       $em = $this->getDoctrine()->getManager();
 
+       $presentations = $em->getRepository('AppBundle:Presentation')->getArticle($slug);
+
+       return $this->render('fr/presentation.html.twig', array(
+           'presentations' => $presentations,
+       ));
+   }
+
+   /**
+   * Recherche des articles actifs de l'entité presentation.
+   *
+   */
+    public function astuceAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $astuces = $em->getRepository('AppBundle:Astuce')->getAstuce(0, 1);
+
+        return $this->render('fr/astuce.html.twig', array(
+            'astuces' => $astuces,
+        ));
+    }
+
+    /**
+    * Recherche des articles actifs de l'entité presentation.
+    *
+    */
+     public function partenaireAction($slug)
+     {
+         $em = $this->getDoctrine()->getManager();
+
+         $partenaires = $em->getRepository('AppBundle:Partenaire')->getPartenaire();
+
+         return $this->render('fr/partenaire.html.twig', array(
+             'partenaires' => $partenaires,
+         ));
+     }
 
 }

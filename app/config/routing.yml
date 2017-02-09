@@ -9,3 +9,23 @@ menu_presentation:
     path:     /menu/presentation
     defaults: { _controller: "AppBundle:Menu:presentation" }
     methods:  [GET, POST]
+
+fo_presentation_show:
+    path:     /presentation/{slug}
+    defaults: { _controller: "AppBundle:Fo:presentation" }
+    methods:  [GET, POST]
+
+fomenu_presentation:
+    path:     /menu/fo-presentation
+    defaults: { _controller: "AppBundle:Menu:fopresentation" }
+    methods:  [GET, POST]
+
+fo_astuce:
+    path:     /astuce
+    defaults: { _controller: "AppBundle:Fo:astuce" }
+    methods:  [GET, POST]
+
+fo_partenaire:
+    path:     /partenaire
+    defaults: { _controller: "AppBundle:Fo:partenaire" }
+    methods:  [GET, POST]

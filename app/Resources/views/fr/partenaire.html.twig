@@ -1,0 +1,3 @@
+{% for partenaire in partenaires %}
+<div class="item"><img src="{{ asset('ressources/images/partenaire/' ~ partenaire.image.id ~ '.' ~ partenaire.image.url )}}" alt="Owl Image" width="186"></div>
+{% endfor %}

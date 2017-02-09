@@ -39,4 +39,34 @@ class InterneRepository extends \Doctrine\ORM\EntityRepository
            return $code = $recup;
        }
    }
+
+   /**
+     * Les publications internes actives
+     *
+     * Author: Delrodie AMOIKON
+     * Date: 09/02/2017
+     * Since: v1.0
+     */
+     public function getInterne($offset, $limit)
+     {
+         $em = $this->getEntityManager();
+         $qb = $em->createQuery('
+             SELECT i
+             FROM AppBundle:Interne i
+             WHERE i.statut = :stat
+             ORDER BY i.datedeb DESC
+         ')
+           ->setParameter('stat', 1)
+           ->setFirstResult($offset)
+           ->setMaxResults($limit)
+         ;
+         try {
+             $result = $qb->getResult();
+
+             return $result;
+
+         } catch (NoResultException $e) {
+             return $e;
+         }
+     }
 }

@@ -106,4 +106,19 @@ class FoController extends Controller
            ));
        }
 
+       /**
+       * Recherche des articles actifs de l'entité internes.
+       *
+       */
+        public function internesAction()
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $internes = $em->getRepository('AppBundle:Interne')->getInterne(null, null);
+
+            return $this->render('fr/internes.html.twig', array(
+                'internes' => $internes,
+            ));
+        }
+
 }

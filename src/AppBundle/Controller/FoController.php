@@ -121,4 +121,19 @@ class FoController extends Controller
             ));
         }
 
+        /**
+        * Recherche des articles actifs de l'entité externes.
+        *
+        */
+         public function externesAction()
+         {
+             $em = $this->getDoctrine()->getManager();
+
+             $externes = $em->getRepository('AppBundle:Externe')->getExterne(null, null);
+
+             return $this->render('fr/externes.html.twig', array(
+                 'externes' => $externes,
+             ));
+         }
+
 }

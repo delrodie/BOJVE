@@ -44,3 +44,8 @@ fo_publication_interne:
     path:     /publications/locales
     defaults: { _controller: "AppBundle:Fo:internes" }
     methods:  [GET, POST]
+
+fo_publication_externe:
+    path:     /publications/internationales
+    defaults: { _controller: "AppBundle:Fo:externes" }
+    methods:  [GET, POST]

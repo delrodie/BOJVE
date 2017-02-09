@@ -22,3 +22,11 @@
 !/web/ressources/images/favicon.jpg
 !/web/ressources/images/bg-footer.jpg
 /src/AppBundle/Entity/*~
+/web/publications/**/*.pdf
+/web/publications/**/*.doc
+/web/publications/**/*.docx
+/web/publications/**/*.xml
+/web/publications/**/*.ppt
+/web/publications/**/*.jpg
+/web/publications/**/*.png
+/web/publications/**/*.gif

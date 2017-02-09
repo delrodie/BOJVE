@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Docexternes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Titre</th>
+                <th>Slug</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for docExterne in docExternes %}
+            <tr>
+                <td><a href="{{ path('admin_docexterne_show', { 'id': docExterne.id }) }}">{{ docExterne.id }}</a></td>
+                <td>{{ docExterne.url }}</td>
+                <td>{{ docExterne.alt }}</td>
+                <td>{{ docExterne.titre }}</td>
+                <td>{{ docExterne.slug }}</td>
+                <td>{% if docExterne.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_docexterne_show', { 'id': docExterne.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_docexterne_edit', { 'id': docExterne.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_docexterne_new') }}">Create a new docExterne</a>
+        </li>
+    </ul>
+{% endblock %}

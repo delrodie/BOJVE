@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Docinternes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Titre</th>
+                <th>Slug</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for docInterne in docInternes %}
+            <tr>
+                <td><a href="{{ path('admin_docinterne_show', { 'id': docInterne.id }) }}">{{ docInterne.id }}</a></td>
+                <td>{{ docInterne.url }}</td>
+                <td>{{ docInterne.alt }}</td>
+                <td>{{ docInterne.titre }}</td>
+                <td>{{ docInterne.slug }}</td>
+                <td>{% if docInterne.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_docinterne_show', { 'id': docInterne.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_docinterne_edit', { 'id': docInterne.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_docinterne_new') }}">Create a new docInterne</a>
+        </li>
+    </ul>
+{% endblock %}

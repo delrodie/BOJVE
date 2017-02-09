@@ -77,6 +77,13 @@ class Projet
     /**
      * @var string
      *
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
      * @Gedmo\Blameable(on="create")
      * @ORM\Column(name="publie_par", type="string", length=255, nullable=true)
      */
@@ -441,5 +448,29 @@ class Projet
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Projet
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

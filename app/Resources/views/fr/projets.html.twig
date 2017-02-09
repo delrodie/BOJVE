@@ -1,0 +1,47 @@
+{% extends 'FOLayout.html.twig' %}
+
+{% block title %}
+  Liste de nos projets
+{% endblock %}
+
+{% block meta %}
+  <meta name="keywords" content="JVE"  />
+  <meta name="description" content="JVE-Côte d'Ivoire a pour mission d'éduquer, de soutenir et de renforcer les capacités de la jeunesse, des femmes et des enfants afin de contribuer au développement durable tout en garantissant une justice sociale pour tous.">
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Liste de nos projets" />
+  <meta property="og:description" content="JVE-Côte d'Ivoire a pour mission d'éduquer, de soutenir et de renforcer les capacités de la jeunesse, des femmes et des enfants afin de contribuer au développement durable tout en garantissant une justice sociale pour tous." />
+  <meta property="og:url" content="http://jvecotedivoire.org/" />
+  <meta property="og:image" content="http://www.jvecotedivoire{{ asset('ressources/images/logo.jpg') }}" />
+  <meta property="og:site_name" content="JVE Côte d'Ivoire" />
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:description" content="JVE-Côte d'Ivoire a pour mission d'éduquer, de soutenir et de renforcer les capacités de la jeunesse, des femmes et des enfants afin de contribuer au développement durable tout en garantissant une justice sociale pour tous."/>
+  <meta name="twitter:title" content="Liste de nos projets"/>
+  <meta name="twitter:domain" content="JVE Côte d'Ivoire"/>
+  <meta property="twitter:image" content="http://www.jvecotedivoire{{ asset('ressources/images/logo.jpg') }}" />
+
+{% endblock %}
+
+{% block body %}
+<div class="col-md-8 jve-actualite">
+  <h2 style="margin-top:45px;">Projets</h2>
+  <div class="row">
+    <div class="small-up-1 medium-up-2 columns">
+      {% for projet in projets %}
+        <div class="columns">
+          <div class="jve-actualite-tuile">
+            <img src="{{ asset('ressources/images/projet/' ~ projet.image.id ~ '.' ~ projet.image.url )}}" alt="{{ projet.titre }}" class="responsive">
+            <h6>{{ projet.titre }}</h6>
+            <div class="nombre-ligne">
+              {{ projet.resume }}
+            </div>
+            <div class="lire-suite"><a href="{{ path('fo_projet_show', { 'slug': projet.slug }) }}"> &raquo; Lire la suite</a></div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}

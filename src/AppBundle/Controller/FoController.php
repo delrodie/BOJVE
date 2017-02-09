@@ -76,4 +76,34 @@ class FoController extends Controller
          ));
      }
 
+     /**
+     * Recherche des articles actifs de l'entité projet.
+     *
+     */
+      public function projetsAction()
+      {
+          $em = $this->getDoctrine()->getManager();
+
+          $projets = $em->getRepository('AppBundle:Projet')->getProjet(null, null);
+
+          return $this->render('fr/projets.html.twig', array(
+              'projets' => $projets,
+          ));
+      }
+
+      /**
+      * Recherche des articles actifs de l'entité projet.
+      *
+      */
+       public function projetAction($slug)
+       {
+           $em = $this->getDoctrine()->getManager();
+
+           $projets = $em->getRepository('AppBundle:Projet')->getArticle($slug);
+
+           return $this->render('fr/projet.html.twig', array(
+               'projets' => $projets,
+           ));
+       }
+
 }

@@ -29,3 +29,13 @@ fo_partenaire:
     path:     /partenaire
     defaults: { _controller: "AppBundle:Fo:partenaire" }
     methods:  [GET, POST]
+
+fo_projets:
+    path:     /projets/liste-de-nos-projets
+    defaults: { _controller: "AppBundle:Fo:projets" }
+    methods:  [GET, POST]
+
+fo_projet_show:
+    path:     /projets/{slug}
+    defaults: { _controller: "AppBundle:Fo:projet" }
+    methods:  [GET, POST]

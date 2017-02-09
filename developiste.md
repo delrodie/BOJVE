@@ -283,3 +283,6 @@ Ainsi nous avons comme MLD
 
 3°/ **Gestion de la classe Phototheque**
 4°/ **Gestion de la classe Videotheque**
+
+==>
+I°/ **Gestion de la page d'acceuil du BackOffice**

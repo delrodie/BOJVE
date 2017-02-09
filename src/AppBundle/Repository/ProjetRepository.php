@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\NoResultException;
+
 /**
  * ProjetRepository
  *
@@ -10,4 +13,33 @@ namespace AppBundle\Repository;
  */
 class ProjetRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+   * Calcule du nombre de projets enregistrés
+   *
+   * Author: Delrodie AMOIKON
+   * Date: 09/12/2017
+   */
+   public function getNombreProjet()
+   {
+       $qb = $this->createQueryBuilder('p')
+           ->select('count(p.id)')
+       ;
+
+       $query = $qb->getQuery();
+
+       $recup =  $query->getSingleScalarResult();
+
+       // Si compteur est egal a 0 alors initialiser
+       if ($recup < 10){
+           $suffixe = $recup ;
+           return $code = '00'.$suffixe;
+       }
+       elseif ($recup < 100) {
+         $suffixe = $recup ;
+         return $code = '0'.$suffixe;
+       }
+       else{
+           return $code = $recup;
+       }
+   }
 }

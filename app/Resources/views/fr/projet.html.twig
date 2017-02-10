@@ -1,0 +1,47 @@
+{% extends 'FOLayout.html.twig' %}
+
+{% block title %}
+  {% for projet in projets %}
+      {{ projet.titre }}
+  {% endfor %}
+{% endblock %}
+
+{% block meta %}
+  {% for projet in projets %}
+  <meta name="keywords" content="{{ projet.tags }}"  />
+  <meta name="description" content="{{ projet.resume }}">
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ projet.titre }}" />
+  <meta property="og:description" content="{{ projet.resume }}" />
+  <meta property="og:url" content="http://jvecotedivoire.org/" />
+  <meta property="og:image" content="http://www.jvecotedivoire{{ asset('ressources/images/logo.jpg') }}" />
+  <meta property="og:site_name" content="JVE Côte d'Ivoire" />
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:description" content="{{ projet.resume }}"/>
+  <meta name="twitter:title" content="{{ projet.titre }}"/>
+  <meta name="twitter:domain" content="JVE Côte d'Ivoire"/>
+  <meta property="twitter:image" content="http://www.jvecotedivoire{{ asset('ressources/images/logo.jpg') }}" />
+  {% endfor %}
+{% endblock %}
+
+{% block body %}
+  {% for projet in projets %}
+  <div class="col-md-8 jve-article">
+    <h2>{{ projet.titre }}</h2>
+    <img src="{{ asset('ressources/images/projet/' ~ projet.image.id ~ '.' ~ projet.image.url )}}" alt="" class="thumbnail img-gauche" width="235">
+    {{ projet.contenu|raw }}
+    {% if projet.url %}
+    <div class="jve-photo">
+      <i class="fa fa-folder-open-o fa-lg"></i>
+      <a href="{{ projet.url}}">Voir l'albums photos correspondant</a>
+    </div>
+    {% endif %}
+    <div class="jve-auteur">
+      <!--<div class="nom">{{ projet.publiePar }} </div>-->
+      <div class="date">Publié le {{ projet.publieLe|date('d-m-Y h:s')}}</div>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}

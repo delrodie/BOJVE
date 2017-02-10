@@ -1,0 +1,50 @@
+{% extends 'FOLayout.html.twig' %}
+
+{% block title %}
+  Liste de nos publications locales
+{% endblock %}
+
+{% block meta %}
+  <meta name="keywords" content="JVE"  />
+  <meta name="description" content="JVE-Côte d'Ivoire a pour mission d'éduquer, de soutenir et de renforcer les capacités de la jeunesse, des femmes et des enfants afin de contribuer au développement durable tout en garantissant une justice sociale pour tous.">
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Liste de nos publications locales" />
+  <meta property="og:description" content="JVE-Côte d'Ivoire a pour mission d'éduquer, de soutenir et de renforcer les capacités de la jeunesse, des femmes et des enfants afin de contribuer au développement durable tout en garantissant une justice sociale pour tous." />
+  <meta property="og:url" content="http://jvecotedivoire.org/" />
+  <meta property="og:image" content="http://www.jvecotedivoire{{ asset('ressources/images/logo.jpg') }}" />
+  <meta property="og:site_name" content="JVE Côte d'Ivoire" />
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:description" content="JVE-Côte d'Ivoire a pour mission d'éduquer, de soutenir et de renforcer les capacités de la jeunesse, des femmes et des enfants afin de contribuer au développement durable tout en garantissant une justice sociale pour tous."/>
+  <meta name="twitter:title" content="Liste de nos publications locales"/>
+  <meta name="twitter:domain" content="JVE Côte d'Ivoire"/>
+  <meta property="twitter:image" content="http://www.jvecotedivoire{{ asset('ressources/images/logo.jpg') }}" />
+
+{% endblock %}
+
+{% block body %}
+<div class="col-md-8 jve-actualite">
+  <h2 style="margin-top:45px;">Nos publications locales</h2>
+  <div class="row">
+    <div class="small-up-1 medium-up-2 columns">
+      {% for interne in internes %}
+        <div class="columns">
+          <div class="jve-actualite-tuile">
+            <h6><i class="fa fa-folder-open-o fa-lg"></i> {{ interne.titre }}</h6>
+            <div class="nombre-ligne">
+              {{ interne.resume }}
+            </div>
+            <div class="lire-suite">
+              <a href="{{ asset('publications/internes/'~ interne.slug ~ '/' ~ interne.document.id ~ '.' ~ interne.document.url )}}" target="_blank">
+                Telecharger le document
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}

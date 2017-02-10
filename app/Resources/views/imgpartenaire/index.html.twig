@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Imgpartenaires list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for imgPartenaire in imgPartenaires %}
+            <tr>
+                <td><a href="{{ path('admin_imgpartenaire_show', { 'id': imgPartenaire.id }) }}">{{ imgPartenaire.id }}</a></td>
+                <td>{{ imgPartenaire.url }}</td>
+                <td>{{ imgPartenaire.alt }}</td>
+                <td>{% if imgPartenaire.statut %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_imgpartenaire_show', { 'id': imgPartenaire.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_imgpartenaire_edit', { 'id': imgPartenaire.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_imgpartenaire_new') }}">Create a new imgPartenaire</a>
+        </li>
+    </ul>
+{% endblock %}

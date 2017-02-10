@@ -36,6 +36,7 @@
       <!-- END THEME GLOBAL STYLES -->
 
       <link href="{{ asset('ressources/vendor/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
+      <link href="{{ asset('ressources/css/bo.css') }}" rel="stylesheet" type="text/css" />
 
       {% endblock %}
     </head>
@@ -60,8 +61,9 @@
                             </button>
                             <!-- End Toggle Button -->
                             <!-- BEGIN LOGO -->
-                            <a id="index" class="page-logo" href="index.html">
-                                BackOffice<img src="../assets/layouts/layout5/img/logo.png" alt="Logo"> </a>
+                            <a id="index" class="page-logo MonLogo" href="#">
+                                BackOffice
+                            </a>
                             <!-- END LOGO -->
                             <!-- BEGIN SEARCH -->
                             <form class="search" action="extra_search.html" method="GET">
@@ -78,7 +80,7 @@
                                     <button type="button" class="btn btn-sm md-skip dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <span>
                                           {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                            {{ 'layout.hello'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} 
+                                            {{ 'layout.hello'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
                                           {% endif %}
                                         </span>
                                         <img src="{{ asset('ressources/images/avatar.png')}}" alt=""> </button>
@@ -123,39 +125,41 @@
                                     <a href="javascript:;" class="text-uppercase">
                                         <i class="icon-folder"></i> Rubriques </a>
                                     <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="">
-                                            <a href="{{ path('admin_rubrique_index')}}">
-                                            <i class="fa fa-list" aria-hidden="true"></i> Listes </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('admin_rubrique_new') }}">
-                                            <i class="fa fa-plus"></i> Ajouter </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-doc"></i> Articles </a>
-                                   <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="">
-                                            <a href="{{ path('admin_article_index')}}">
-                                            <i class="fa fa-list" aria-hidden="true"></i> Listes </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('admin_article_new')}}">
-                                            <i class="fa fa-plus"></i> Ajouter </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="icon-picture"></i> Photos </a>
-                                    <ul class="dropdown-menu dropdown-menu-fw">
-                                        <li class="">
-                                            <a href="">
-                                            <i class="fa fa-folder-open-o"></i> albums </a>
-                                        </li>
 
+                                        <li class="dropdown more-dropdown-sub">
+                                          <a href="javascript:;"> Accueil </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="{{ path('admin_slider_index')}}">Slider</a></li>
+                                            <li><a href="{{ path('admin_astuce_index')}}">Conseils</a></li>
+                                            <li><a href="{{ path('admin_partenaire_index')}}">Partenaires</a></li>
+                                          </ul>
+                                      </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                        <a href="javascript:;"> Qui sommes-nous? </a>
+                                        <ul class="dropdown-menu">
+                                          {{ render(url('menu_presentation')) }}
+                                        </ul>
+                                    </li>
+                                      <li class="">
+                                          <a href="{{ path('admin_projet_index')}}"> Nos projets </a>
+                                      </li>
+                                      <li class="dropdown more-dropdown-sub">
+                                        <a href="javascript:;"> Nos publications </a>
+                                        <ul class="dropdown-menu">
+                                          <li><a href="{{ path('admin_interne_index') }}">Internes</a></li>
+                                          <li><a href="{{ path('admin_externe_index') }}">Externes</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown more-dropdown-sub">
+                                      <a href="javascript:;"> Mediathèque </a>
+                                      <ul class="dropdown-menu">
+                                        <li><a href="{{ path('admin_phototheque_index') }}">Photos</a></li>
+                                        <li><a href="{{ path('admin_videotheque_index') }}">Videos</a></li>
+                                      </ul>
+                                  </li>
+                                  <li class="">
+                                      <a href="#"> Contact </a>
+                                  </li>
                                     </ul>
                                 </li>
                                 <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
@@ -173,6 +177,46 @@
                                         <li>
                                             <a href="{{ path('admin_group_index')}}">
                                             <i class="fa fa-users"></i> Groupe </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-fw dropdown-fw-disabled  ">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="fa fa-cogs"></i> Paramètres </a>
+                                    <ul class="dropdown-menu dropdown-menu-fw">
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"><i class="fa fa-plus"></i> Accueil </a>
+                                            <ul class="dropdown-menu">
+                                              <li><a href="{{ path('admin_slider_new')}}">Slider</a></li>
+                                              <li><a href="{{ path('admin_astuce_new')}}">Conseils</a></li>
+                                              <li><a href="{{ path('admin_partenaire_new') }}">Partenaires</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('admin_presentation_new') }}">
+                                            <i class="fa fa-plus"></i> Qui sommes-nous? </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('admin_projet_new') }}">
+                                            <i class="fa fa-plus"></i> Nos projets </a>
+                                        </li>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"><i class="fa fa-plus"></i> Nos publications </a>
+                                            <ul class="dropdown-menu">
+                                              <li><a href="{{ path('admin_interne_new') }}">Internes</a></li>
+                                              <li><a href="{{ path('admin_externe_new') }}">Externes</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown more-dropdown-sub">
+                                            <a href="javascript:;"><i class="fa fa-plus"></i> Mediatheque </a>
+                                            <ul class="dropdown-menu">
+                                              <li><a href="{{ path('admin_phototheque_new') }}">Photos</a></li>
+                                              <li><a href="{{ path('admin_videotheque_new') }}">Videos</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                            <i class="fa fa-plus"></i> Contact </a>
                                         </li>
                                     </ul>
                                 </li>

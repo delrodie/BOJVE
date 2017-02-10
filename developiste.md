@@ -245,3 +245,44 @@ Ainsi nous avons comme MLD
 7°/ **Installation de StofDoctrineExtensionsBundle**
     Installation de StofDoctrineExtensionsBundle
     ** - [*- https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/symfony2.md -*]
+
+
+/*****
+ *** Gestion du site de JVE Côte d'Ivoire
+ *** @Author: Delrodie AMOIKON
+ *** @version: 1.1.*
+ *** @Date: Lundi 06 Fevrier 2017
+*****/
+
+1°/ **Gestion de la classe Presentation**
+    Creation des classes Presentation et ImgPresentation
+    ** - [*- php bin/console doctrine:generate:entity AppBundle:Presentation/ImgPresentation -*]
+
+    Mise a jour de la base de données
+    ** - [*- php bin/console doctrine:schema:update --force -*]
+
+    Generation CRUD de la classe ImgPresentation
+    ** - [*- php bin/console doctrine:generate:crud AppBundle:ImgPresentation -*]
+
+    Generation CRUD de la classe Presentation
+    ** - [*- php bin/console doctrine:generate:crud AppBundle:Presentation -*]
+
+    Intregration du menu de la rubrique Presentation dans le layout
+
+2°/ **Gestion de la classe Projet**
+    Creation des classes Projets et ImgProjet
+    ** - [*- php bin/console doctrine:generate:entity AppBundle:Projet/ImgProjet -*]
+
+    Mise a jour de la base de données
+    ** - [*- php bin/console doctrine:schema:update --force -*]
+
+    Genetation CRUD de la classe ImgProjet
+    ** - [*- php bin/console doctrine:generate:crud AppBundle:ImgProjet -*]
+
+    Modification de la classe Form/ImgProjetType
+
+3°/ **Gestion de la classe Phototheque**
+4°/ **Gestion de la classe Videotheque**
+
+==>
+I°/ **Gestion de la page d'acceuil du BackOffice**

@@ -4,3 +4,58 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+menu_presentation:
+    path:     /menu/presentation
+    defaults: { _controller: "AppBundle:Menu:presentation" }
+    methods:  [GET, POST]
+
+fo_presentation_show:
+    path:     /presentation/{slug}
+    defaults: { _controller: "AppBundle:Fo:presentation" }
+    methods:  [GET, POST]
+
+fomenu_presentation:
+    path:     /menu/fo-presentation
+    defaults: { _controller: "AppBundle:Menu:fopresentation" }
+    methods:  [GET, POST]
+
+fo_astuce:
+    path:     /astuce
+    defaults: { _controller: "AppBundle:Fo:astuce" }
+    methods:  [GET, POST]
+
+fo_partenaire:
+    path:     /partenaire
+    defaults: { _controller: "AppBundle:Fo:partenaire" }
+    methods:  [GET, POST]
+
+fo_projets:
+    path:     /projets/liste-de-nos-projets
+    defaults: { _controller: "AppBundle:Fo:projets" }
+    methods:  [GET, POST]
+
+fo_projet_show:
+    path:     /projets/{slug}
+    defaults: { _controller: "AppBundle:Fo:projet" }
+    methods:  [GET, POST]
+
+fo_publication_interne:
+    path:     /publications/locales
+    defaults: { _controller: "AppBundle:Fo:internes" }
+    methods:  [GET, POST]
+
+fo_publication_externe:
+    path:     /publications/internationales
+    defaults: { _controller: "AppBundle:Fo:externes" }
+    methods:  [GET, POST]
+
+fo_photos:
+    path:     /phototheques/liste-des-albums-photos
+    defaults: { _controller: "AppBundle:Fo:photos" }
+    methods:  [GET, POST]
+
+fo_photo_show:
+    path:     /phototheques/albums/{slug}
+    defaults: { _controller: "AppBundle:Fo:photo" }
+    methods:  [GET, POST]

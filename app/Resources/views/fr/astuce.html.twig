@@ -1,0 +1,14 @@
+{% for astuce in astuces %}
+<div class="jve-conseils">
+  <h4>{{ astuce.titre }}</h4>
+  <blockquote class="blockquote-reverse">
+    <p>
+      {{ astuce.description }}
+    </p>
+    <footer>
+      {{ astuce.auteur }}
+    </footer>
+    <cite>{{ astuce.source }}</cite>
+  </blockquote>
+</div>
+{% endfor %}

@@ -10,4 +10,30 @@ namespace AppBundle\Repository;
  */
 class SliderRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+    * Requête de recherche des sliders actifs
+    *
+    * Author: Delrodie AMOIKON
+    * Date: 09/02/2017
+    * Since: v1.0
+    */
+    public function getSlider()
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery('
+            SELECT s
+            FROM AppBundle:Slider s
+            WHERE s.statut = :stat
+        ')
+          ->setParameter('stat', 1)
+        ;
+        try {
+            $result = $qb->getResult();
+
+            return $result;
+
+        } catch (NoResultException $e) {
+            return $e;
+        }
+    }
 }

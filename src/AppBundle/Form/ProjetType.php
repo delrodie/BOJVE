@@ -55,7 +55,13 @@ class ProjetType extends AbstractType
                   ),
                   'required' => 'true'
             ))
-            //->add('publiePar')
+            ->add('url', TextType::class, array(
+                  'attr'  => array(
+                      'class' => 'form-control',
+                      'autocomplete'  => 'off'
+                  ),
+                  'required' => false
+            ))
             //->add('modifiePar')
             //->add('publieLe')
             //->add('modifieLe')

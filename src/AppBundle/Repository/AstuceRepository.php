@@ -10,4 +10,33 @@ namespace AppBundle\Repository;
  */
 class AstuceRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+    * Les astuces actifs
+    *
+    * Author: Delrodie AMOIKON
+    * Date: 09/02/2017
+    * Since: v1.0
+    */
+    public function getAstuce($offset, $limit)
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQuery('
+            SELECT a
+            FROM AppBundle:Astuce a
+            WHERE a.statut = :stat
+            ORDER BY a.datedeb DESC
+        ')
+          ->setParameter('stat', 1)
+          ->setFirstResult($offset)
+          ->setMaxResults($limit)
+        ;
+        try {
+            $result = $qb->getResult();
+
+            return $result;
+
+        } catch (NoResultException $e) {
+            return $e;
+        }
+    }
 }

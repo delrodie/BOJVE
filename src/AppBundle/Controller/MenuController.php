@@ -32,6 +32,19 @@ class MenuController extends Controller
       ));
   }
 
+  /**
+   * Menu de la rubrique presentation.
+   *
+   */
+  public function fopresentationAction()
+  {
+      $em = $this->getDoctrine()->getManager();
 
+      $presentations = $em->getRepository('AppBundle:Presentation')->getMenu();
+
+      return $this->render('menu/fopresentation.html.twig', array(
+          'presentations' => $presentations,
+      ));
+  }
 
 }

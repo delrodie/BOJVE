@@ -21,6 +21,7 @@
 !/web/ressources/images/logo.jpg
 !/web/ressources/images/favicon.jpg
 !/web/ressources/images/bg-footer.jpg
+!/web/ressources/images/car01.jpg
 /src/AppBundle/Entity/*~
 /web/publications/**/*.pdf
 /web/publications/**/*.doc

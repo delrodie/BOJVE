@@ -10,4 +10,63 @@ namespace AppBundle\Repository;
  */
 class InterneRepository extends \Doctrine\ORM\EntityRepository
 {
+  /**
+   * Calcule du nombre de publications internes enregistrées
+   *
+   * Author: Delrodie AMOIKON
+   * Date: 09/12/2017
+   */
+   public function getNombrePublicationInterne()
+   {
+       $qb = $this->createQueryBuilder('p')
+           ->select('count(p.id)')
+       ;
+
+       $query = $qb->getQuery();
+
+       $recup =  $query->getSingleScalarResult();
+
+       // Si compteur est egal a 0 alors initialiser
+       if ($recup < 10){
+           $suffixe = $recup ;
+           return $code = '00'.$suffixe;
+       }
+       elseif ($recup < 100) {
+         $suffixe = $recup ;
+         return $code = '0'.$suffixe;
+       }
+       else{
+           return $code = $recup;
+       }
+   }
+
+   /**
+     * Les publications internes actives
+     *
+     * Author: Delrodie AMOIKON
+     * Date: 09/02/2017
+     * Since: v1.0
+     */
+     public function getInterne($offset, $limit)
+     {
+         $em = $this->getEntityManager();
+         $qb = $em->createQuery('
+             SELECT i
+             FROM AppBundle:Interne i
+             WHERE i.statut = :stat
+             ORDER BY i.datedeb DESC
+         ')
+           ->setParameter('stat', 1)
+           ->setFirstResult($offset)
+           ->setMaxResults($limit)
+         ;
+         try {
+             $result = $qb->getResult();
+
+             return $result;
+
+         } catch (NoResultException $e) {
+             return $e;
+         }
+     }
 }

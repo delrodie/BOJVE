@@ -77,6 +77,13 @@ class Projet
     /**
      * @var string
      *
+     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var string
+     *
      * @Gedmo\Blameable(on="create")
      * @ORM\Column(name="publie_par", type="string", length=255, nullable=true)
      */

@@ -1,0 +1,56 @@
+{% extends 'FOLayout.html.twig' %}
+
+{% block title %}
+  {% for phototheque in photos %}
+      {{ phototheque.titre }}
+  {% endfor %}
+{% endblock %}
+
+{% block meta %}
+  {% for phototheque in photos %}
+  <meta name="keywords" content="JVE"  />
+  <meta name="description" content="{{ phototheque.description }}">
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ phototheque.titre }}" />
+  <meta property="og:description" content="{{ phototheque.description }}" />
+  <meta property="og:url" content="http://jvecotedivoire.org/" />
+  <meta property="og:image" content="http://www.jvecotedivoire{{ asset('ressources/images/logo.jpg') }}" />
+  <meta property="og:site_name" content="JVE Côte d'Ivoire" />
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:description" content="{{ phototheque.description }}"/>
+  <meta name="twitter:title" content="{{ phototheque.titre }}"/>
+  <meta name="twitter:domain" content="JVE Côte d'Ivoire"/>
+  <meta property="twitter:image" content="http://www.jvecotedivoire{{ asset('ressources/images/logo.jpg') }}" />
+  {% endfor %}
+{% endblock %}
+
+{% block body %}
+<div class="col-md-8 jve-actualite">
+  {% for phototheque in photos %}
+  <h2 style="margin-top:45px;">{{ phototheque.titre }}</h2>
+  <div class="row">
+    <div class="small-up-2 medium-up-3 columns">
+        {% for photo in phototheque.image %}
+      <div class="columns">
+          <div class="reveal" id="photo{{photo.id}}" data-reveal>
+            <img src="{{ asset('ressources/images/phototheque/' ~ photo.id ~ '.' ~ photo.url )}}" alt="" class="thumbnail">
+            <div class="jve-photo-description">
+              {{ photo.description }}
+            </div>
+            <button class="close-button" type="button"  data-close aria-label="Close modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <a data-open="photo{{photo.id}}" title="Logo">
+            <img src="{{ asset('ressources/images/phototheque/' ~ photo.id ~ '.' ~ photo.url )}}" alt="">
+          </a>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+
+</div>
+{% endblock %}

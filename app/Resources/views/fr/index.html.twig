@@ -150,7 +150,7 @@
                   <div class="nombre-ligne">
                     {{ projet.resume }}
                   </div>
-                  <div class="lire-suite"><a href="{{ path('admin_projet_edit', { 'slug': projet.slug }) }}"> &raquo; Lire la suite</a></div>
+                  <div class="lire-suite"><a href="{{ path('fo_projet_show', { 'slug': projet.slug }) }}"> &raquo; Lire la suite</a></div>
                 </div>
               </div>
 						{% endfor %}
@@ -259,6 +259,7 @@
 		<div class="row">
 			<div class="col-xs-11 small-centered jve-copyright">
 				&copy; Copyright 2016-2017 Jeunes Volontaires pour l'Environnement
+				<span style="float: right"><a href="{{ path('admin_accueil')}}" target="_blank">Admin</a></span>
 			</div>
 		</div>
 		<!-- \COPYRIGHT -->
